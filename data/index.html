@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+<title>GestureOS Dashboard</title>
+<link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+<header>
+  <h1>GestureOS <span class="accent">Dashboard</span></h1>
+  <div class="status">
+    <span id="statusDot" class="dot disconnected"></span>
+    <span id="statusText">Disconnected</span>
+  </div>
+</header>
+
+<main>
+  <section class="viz">
+    <div id="threeContainer"></div>
+    <div class="gesture-label">
+      <div class="gesture-name" id="gestureName">NONE</div>
+      <div class="gesture-id">ID <span id="gestureId">0</span></div>
+    </div>
+  </section>
+
+  <section class="log">
+    <h2>Gesture Log</h2>
+    <div class="log-wrap">
+      <table id="logTable">
+        <thead>
+          <tr><th>Time</th><th>Gesture</th><th>Roll</th><th>Pitch</th><th>F1</th><th>F2</th></tr>
+        </thead>
+        <tbody id="logBody"></tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="telemetry">
+    <div class="gauge">
+      <label>Roll <span id="rollVal">0.0°</span></label>
+      <div class="bar centered"><div class="fill" id="rollFill"></div></div>
+    </div>
+    <div class="gauge">
+      <label>Pitch <span id="pitchVal">0.0°</span></label>
+      <div class="bar centered"><div class="fill" id="pitchFill"></div></div>
+    </div>
+    <div class="gauge">
+      <label>Flex 1 <span id="flex1Val">0%</span></label>
+      <div class="bar"><div class="fill" id="flex1Fill"></div></div>
+    </div>
+    <div class="gauge">
+      <label>Flex 2 <span id="flex2Val">0%</span></label>
+      <div class="bar"><div class="fill" id="flex2Fill"></div></div>
+    </div>
+    <div class="servo-pair">
+      <div>Servo Pan <b id="servoPan">90</b>°</div>
+      <div>Servo Tilt <b id="servoTilt">90</b>°</div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <span>ESP32 · 100 Hz · WebSocket :81</span>
+  <span>TEINN 2025/2026</span>
+</footer>
+
+<script src="/three.min.js"></script>
+<script src="/app.js"></script>
+</body>
+</html>
