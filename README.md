@@ -20,7 +20,19 @@ from its own WiFi Access Point. **No internet, no cloud, no phone app.**
 
 See [`docs/wiring.md`](docs/wiring.md) for the full pin map and circuit notes.
 
-## Software setup
+## Try the dashboard without any hardware
+
+You can preview the full dashboard before any components arrive — no ESP32, no
+glove, nothing to wire up. Just open `data/index.html` in any modern browser
+(Chrome, Edge, Firefox). The dashboard auto-detects that it has no WebSocket to
+talk to and switches into **DEMO mode**, generating simulated sensor data that
+cycles through every gesture: tilts in all four directions, GRAB, and POINT.
+A yellow `DEMO` badge appears in the header so it's clear the data is fake.
+
+Once a real ESP32 is reachable, the same page connects automatically and the
+DEMO badge disappears.
+
+## Software setup (with hardware)
 
 1. Install [PlatformIO](https://platformio.org/) (VS Code extension is easiest).
 2. Clone and enter the repo:
@@ -28,18 +40,15 @@ See [`docs/wiring.md`](docs/wiring.md) for the full pin map and circuit notes.
    git clone https://github.com/Hipdarius/GestureOS.git
    cd GestureOS
    ```
-3. Drop a real Three.js r128 build into `data/three.min.js`, overwriting the
-   placeholder:
-   https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js
-4. Build and flash the firmware:
+3. Build and flash the firmware:
    ```bash
    pio run --target upload
    ```
-5. Upload the dashboard (HTML/CSS/JS) to the ESP32's SPIFFS partition:
+4. Upload the dashboard (HTML/CSS/JS) to the ESP32's SPIFFS partition:
    ```bash
    pio run --target uploadfs
    ```
-6. Open serial monitor to see boot logs:
+5. Open serial monitor to see boot logs:
    ```bash
    pio device monitor
    ```
